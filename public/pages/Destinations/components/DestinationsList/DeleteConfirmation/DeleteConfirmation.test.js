@@ -18,7 +18,8 @@ import { mount } from 'enzyme';
 import DeleteConfirmation from './DeleteConfirmation';
 
 describe('<DeleteConfirmation />', () => {
-  test.skip('should render if isVisible is provided to true', () => {
+  // Why is this test being skipped? it is not on the aes version
+  test('should render if isVisible is provided to true', () => {
     const wrapper = mount(
       <div>
         <DeleteConfirmation isVisible onConfirm={jest.fn()} onCancel={jest.fn()} />
@@ -40,10 +41,7 @@ describe('<DeleteConfirmation />', () => {
       <DeleteConfirmation isVisible onConfirm={handleOnConfirm} onCancel={jest.fn()} />
     );
     // Simulate Confirm Click
-    wrapper
-      .find('button')
-      .at(2)
-      .simulate('click');
+    wrapper.find('button').at(2).simulate('click');
     expect(handleOnConfirm).toHaveBeenCalledTimes(1);
   });
   test('should call onCancel on click of Cancel button', () => {
@@ -52,10 +50,7 @@ describe('<DeleteConfirmation />', () => {
       <DeleteConfirmation isVisible onConfirm={jest.fn()} onCancel={handleOnCancel} />
     );
     // Simulate Cancel Click
-    wrapper
-      .find('button')
-      .at(1)
-      .simulate('click');
+    wrapper.find('button').at(1).simulate('click');
     expect(handleOnCancel).toHaveBeenCalledTimes(1);
   });
 });

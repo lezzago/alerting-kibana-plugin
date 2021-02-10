@@ -20,7 +20,7 @@ import { Formik } from 'formik';
 import MonitorTimeField from './MonitorTimeField';
 
 describe('MonitorTimeField', () => {
-  test.skip('renders', () => {
+  test('renders', () => {
     const component = (
       <Formik initialValues={{}} onSubmit={() => {}}>
         <MonitorTimeField dataTypes={{}} />
@@ -30,7 +30,7 @@ describe('MonitorTimeField', () => {
     expect(render(component)).toMatchSnapshot();
   });
 
-  test.skip('displays no options', () => {
+  test('displays no options', () => {
     const wrapper = mount(
       <Formik initialValues={{}} onSubmit={() => {}}>
         <MonitorTimeField dataTypes={{}} />
@@ -40,7 +40,7 @@ describe('MonitorTimeField', () => {
     expect(wrapper.find('select').props().children[1].length).toBe(1);
   });
 
-  test.skip('displays options', () => {
+  test('displays options', () => {
     const wrapper = mount(
       <Formik initialValues={{}} onSubmit={() => {}}>
         <MonitorTimeField dataTypes={{ date: ['date1', 'date2', 'date3'] }} />

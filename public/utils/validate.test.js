@@ -18,6 +18,8 @@ import {
   hasError,
   validateActionName,
   validateMonitorName,
+  validateSNSTopicARN,
+  validateIAMRoleARN,
   validatePositiveInteger,
   validateUnit,
   validateMonthlyDay,

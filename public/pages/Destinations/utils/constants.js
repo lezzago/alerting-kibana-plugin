@@ -18,9 +18,11 @@ export const DESTINATION_TYPE = {
   SLACK: 'slack',
   CUSTOM_HOOK: 'custom_webhook',
   EMAIL: 'email',
+  SNS: 'sns',
 };
 
 export const DESTINATION_OPTIONS = [
+  { value: DESTINATION_TYPE.SNS, text: 'Amazon SNS' },
   { value: DESTINATION_TYPE.CHIME, text: 'Amazon Chime' },
   { value: DESTINATION_TYPE.SLACK, text: 'Slack' },
   { value: DESTINATION_TYPE.CUSTOM_HOOK, text: 'Custom webhook' },

@@ -5,9 +5,11 @@ class AlertingFakes {
     this.chance = new Chance(seed);
 
     this.randomEmailDestination = this.randomEmailDestination.bind(this);
+    this.randomSNSTopicARN = this.randomSNSTopicARN.bind(this);
     this.randomCustomWebhookDestination = this.randomCustomWebhookDestination.bind(this);
     this.randomChimeDestination = this.randomChimeDestination.bind(this);
     this.randomSlackDestination = this.randomSlackDestination.bind(this);
+    this.randomSNSDestination = this.randomSNSDestination.bind(this);
     this.randomDestination = this.randomDestination.bind(this);
     this.randomAction = this.randomAction.bind(this);
     this.randomTrigger = this.randomTrigger.bind(this);
@@ -29,6 +31,12 @@ class AlertingFakes {
         recipients: `${this.chance.word()}@${this.chance.word()}.test`,
       },
     };
+  }
+  randomSNSTopicARN() {
+    return `arn:aws:sns:us-east-1:${this.chance.string({
+      length: 12,
+      pool: '0123456789',
+    })}:${this.chance.word()}`;
   }
 
   randomCustomWebhookDestination() {
@@ -66,8 +74,19 @@ class AlertingFakes {
     };
   }
 
+  randomSNSDestination() {
+    return {
+      type: 'sns',
+      sns: {
+        topic_arn: this.randomSNSTopicARN(),
+        role_arn: this.randomIAMRoleARN(),
+      },
+    };
+  }
+
   randomDestination() {
     const destination = this.chance.pickone([
+      this.randomSNSDestination,
       this.randomSlackDestination,
       this.randomChimeDestination,
       this.randomCustomWebhookDestination,

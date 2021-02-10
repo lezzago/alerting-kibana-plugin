@@ -31,6 +31,9 @@ export const formikInitialValues = {
   [DESTINATION_TYPE.SLACK]: {
     url: '',
   },
+  [DESTINATION_TYPE.SNS]: {
+    topic_arn: '',
+  },
   [DESTINATION_TYPE.CHIME]: {
     url: '',
   },

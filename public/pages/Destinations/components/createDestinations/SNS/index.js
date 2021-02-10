@@ -13,9 +13,6 @@
  *   permissions and limitations under the License.
  */
 
-import Webhook from './Webhook/Webhook';
-import CustomWebhook from './CustomWebhook';
-import Email from './Email';
-import SNS from './SNS/SNS';
+import SNS from './SNS';
 
-export { Webhook, CustomWebhook, Email, SNS };
+export default SNS;

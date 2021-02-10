@@ -34,7 +34,7 @@ import { DESTINATION_OPTIONS, DESTINATION_TYPE } from '../../utils/constants';
 import { validateDestinationName, validateDestinationType } from './utils/validations';
 import { formikToDestination } from './utils/formikToDestination';
 import { destinationToFormik } from './utils/destinationToFormik';
-import { Webhook, CustomWebhook, Email } from '../../components/createDestinations';
+import { Webhook, CustomWebhook, Email, SNS } from '../../components/createDestinations';
 import { SubmitErrorHandler } from '../../../../utils/SubmitErrorHandler';
 import { getAllowList } from '../../utils/helpers';
 import { backendErrorNotification } from '../../../../utils/helpers';
@@ -44,6 +44,7 @@ const destinationType = {
   [DESTINATION_TYPE.CHIME]: (props) => <Webhook {...props} />,
   [DESTINATION_TYPE.CUSTOM_HOOK]: (props) => <CustomWebhook {...props} />,
   [DESTINATION_TYPE.EMAIL]: (props) => <Email {...props} />,
+  [DESTINATION_TYPE.SNS]: (props) => <SNS {...props} />,
 };
 
 class CreateDestination extends React.Component {
@@ -234,7 +235,20 @@ class CreateDestination extends React.Component {
                     }}
                   />
                   <EuiSpacer size="m" />
-                  <SubHeader title={<h4>Settings</h4>} description={''} />
+                  <SubHeader
+                    title={<h4>Settings</h4>}
+                    description={''}
+                    rowProps={{
+                      label: 'Name',
+                      helpText: 'This is for the keystore stuff.',
+                      style: { paddingLeft: '10px' },
+                      isInvalid,
+                      error: hasError,
+                    }}
+                  />
+                  <div>
+                    Please use elastic-keystore to save the IAM user access and secret keys.
+                  </div>
                   <EuiSpacer size="m" />
                   {destinationType[values.type]({
                     httpClient,
