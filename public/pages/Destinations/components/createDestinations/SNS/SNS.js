@@ -29,8 +29,24 @@ export default class SNS extends Component {
           fieldProps={{ validate: validateSNSTopicARN }}
           rowProps={{
             label: 'SNS topic ARN',
-            helpText:
-              'IAM user access and secret key credentials are required to access the SNS topic. Please add the following two fields to Elastic Keystore: <br>opendistro.alerting.destination.sns.access.key: [accessKey] <br>opendistro.alerting.destination.sns.secret.key: [secretKey]',
+            style: { paddingLeft: '10px' },
+            isInvalid,
+            error: hasError,
+          }}
+          inputProps={{ isInvalid }}
+        />
+        <FormikFieldText
+          name={`${type}.role_arn`}
+          formRow
+          fieldProps={{ validate: validateIAMRoleARN }}
+          rowProps={{
+            label: 'IAM role ARN (Optional)',
+            helpText: `The IAM role arn can only be used if the cluster in running on the AWS network. If it is not, please
+              note the IAM user access and secret key credentials are required to access the SNS topic.
+
+              Please then add the following fields to Elastic Keystore:
+              opendistro.alerting.destination.sns.access.key: [accessKey]
+              opendistro.alerting.destination.sns.secret.key: [secretKey]`,
             style: { paddingLeft: '10px' },
             isInvalid,
             error: hasError,

@@ -235,20 +235,6 @@ class CreateDestination extends React.Component {
                     }}
                   />
                   <EuiSpacer size="m" />
-                  <SubHeader
-                    title={<h4>Settings</h4>}
-                    description={''}
-                    rowProps={{
-                      label: 'Name',
-                      helpText: 'This is for the keystore stuff.',
-                      style: { paddingLeft: '10px' },
-                      isInvalid,
-                      error: hasError,
-                    }}
-                  />
-                  <div>
-                    Please use elastic-keystore to save the IAM user access and secret keys.
-                  </div>
                   <EuiSpacer size="m" />
                   {destinationType[values.type]({
                     httpClient,

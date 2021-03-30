@@ -26,7 +26,7 @@ export const validateSNSTopicARN = (value) => {
 };
 
 export const validateIAMRoleARN = (value) => {
-  if (!value) return 'Required';
+  if (!value) return;
   const pattern = getIAMRoleARNRegExpPattern();
   const isValidARN = new RegExp(pattern).test(value);
   if (!isValidARN) return 'Invalid IAM role ARN';
